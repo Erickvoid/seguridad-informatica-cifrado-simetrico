@@ -1,0 +1,153 @@
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                Registro
+            </div>
+            <div class="card-body">
+                <form [formGroup]="form" (ngSubmit)="signUp()">
+                    <div class="form-group">
+                        <label for="userName" [ngClass]="form.controls['userName'].invalid ? 'text-danger' : ''">Ingresa un nombre de usuario</label>
+                        <input id="userName" class="form-control"type="text" formControlName="userName" placeholder="Usuario">
+                        <label class="text-danger" *ngIf="form.controls['userName'].hasError('required')">
+                            Usuario es Requerido!
+                          </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" [ngClass]="form.controls['password'].invalid ? 'text-danger' : ''">Contraseña:</label>
+                        <input class="form-control" type="password" formControlName="password" placeholder="Contraseña">
+                        <label class="col"
+                            [ngClass]="form.controls['password'].hasError('required') || form.controls['password'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
+                            <i class="material-icons">{{ form.controls['password'].hasError('required') ||
+                                form.controls['password'].hasError('hasSpecialCharacters') ? '' :
+                                '' }}</i>
+                            Debe contener por lo menos 1 Caracter Especial!
+                        </label>
+                        <label class="col"
+                            [ngClass]="form.controls['password'].hasError('required') || form.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+                            <i class="material-icons">{{ form.controls['password'].hasError('required') ||
+                                form.controls['password'].hasError('hasSmallCase') ? '' :
+                                '' }}</i>
+                            Debe contener por lo menos 1 Minuscula!
+                        </label>
+                        <label class="col"
+                            [ngClass]="form.controls['password'].hasError('required') || form.controls['password'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+                            <i>{{ form.controls['password'].hasError('required') ||
+                                form.controls['password'].hasError('hasCapitalCase') ? '' :
+                                '' }}</i>
+                            Debe contener por lo menos 1 Mayuscula!
+                        </label>
+                        <label class="col"
+                            [ngClass]="form.controls['password'].hasError('required') || form.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+                            <i>{{ form.controls['password'].hasError('required') ||
+                                form.controls['password'].hasError('hasNumber') ? '' :
+                                '' }}</i>
+                            Debe contener por lo menos 1 Numero!
+                        </label>
+                        <label class="col"
+                            [ngClass]="form.controls['password'].hasError('required') || form.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+                            <i>{{ form.controls['password'].hasError('required') ||
+                                form.controls['password'].hasError('minlength') ? '' :
+                                '' }}</i>
+                            Debe contener por lo menos 8 Caracteres!
+                        </label>
+ 
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name" [ngClass]="form.controls['name'].invalid ? 'text-danger' : ''">Ingresa tu nombre(s)</label>
+                        <input 
+                        class="form-control"
+                        type="text" 
+                        formControlName="name" 
+                        placeholder="Nombre(s)" 
+                        >
+                        <label class="text-danger" *ngIf="form.controls['name'].hasError('required')">
+                            Nombre es Requerido!
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellidoPaterno" [ngClass]="form.controls['apellidoPaterno'].invalid ? 'text-danger' : ''">Ingresa Apellido Paterno</label>
+                        <input 
+                        class="form-control"
+                        type="text" 
+                        formControlName="apellidoPaterno" 
+                        placeholder="Apellido Paterno" 
+                        >
+                        <label class="text-danger" *ngIf="form.controls['apellidoPaterno'].hasError('required')">
+                            Apellido es Requerido!
+                          </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellidoMaterno" [ngClass]="form.controls['apellidoMaterno'].invalid ? 'text-danger' : ''">Ingresa Apellido Materno</label>
+                        <input 
+                        class="form-control"
+                        type="text" 
+                        formControlName="apellidoMaterno" 
+                        placeholder="Apellido Materno" 
+                        >
+                        <label class="text-danger" *ngIf="form.controls['apellidoMaterno'].hasError('required')">
+                            Apellido es Requerido!
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNum" [ngClass]="form.controls['phoneNum'].invalid ? 'text-danger' : ''">Ingresa telefono</label>
+                        <input 
+                        class="form-control"
+                        type="text" 
+                        formControlName="phoneNum" 
+                        placeholder="Numero de telefono" 
+                        >
+                          <label class="col" [ngClass]="form.controls['phoneNum'].hasError('required') || form.controls['phoneNum'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+                            <i class="material-icons">{{ form.controls['phoneNum'].hasError('required') ||
+                                form.controls['phoneNum'].hasError('minlength') ? '' :
+                              '' }}</i>
+                              Debe contener por lo menos 10 digitos!
+                          </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="addressCalle" [ngClass]="form.controls['addressCalle'].invalid ? 'text-danger' : ''">Ingresa calle y número</label>
+                        <input 
+                        class="form-control"
+                        type="text" 
+                        formControlName="addressCalle" 
+                        placeholder="Calle y numero INT o EXT" 
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="addressColonia" [ngClass]="form.controls['addressColonia'].invalid ? 'text-danger' : ''">Ingresa Colonia</label>
+                        <input 
+                        class="form-control"
+                        type="text" 
+                        formControlName="addressColonia" 
+                        placeholder="Colonia" 
+                        >
+                        <label class="text-danger" *ngIf="form.controls['addressColonia'].hasError('required')">
+                            Colonia es Requerido!
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="addressColonia" [ngClass]="form.controls['codPostal'].invalid ? 'text-danger' : ''">Ingresa Código Postal</label>
+                        <input 
+                        class="form-control"
+                        type="number" 
+                        formControlName="codPostal" 
+                        placeholder="Código Postal" 
+                        >
+                        <label class="text-danger" *ngIf="form.controls['codPostal'].hasError('required')">
+                            Código Postal es necesario!
+                        </label>
+                    </div>
+                    <button 
+                    class="btn btn-primary btn-block"
+                    [disabled]="form.invalid" type="submit"
+                    > Registrarse </button>
+                    <p>Form Value: {{ form.value | json}}</p>
+                    <p>Form Status: {{ form.status | json}}</p> 
+                    <!--- ---> 
+                    <!---  ---> 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
